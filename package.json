@@ -27,11 +27,25 @@
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.3.0",
-    "react-script": "^2.0.5"
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "commitizen": "^4.2.4",
     "dotenv": "^16.0.1",
+    "fs": "^0.0.1-security",
     "husky": "^8.0.1"
+  },
+  "target": "node",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
