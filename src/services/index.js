@@ -13,7 +13,7 @@ export const createPost = async (data, userId) => {
   const res = await axios.post(
     'http://localhost:9001/create-post',
     {
-      data,
+      ...data,
     },
     {
       headers: {
