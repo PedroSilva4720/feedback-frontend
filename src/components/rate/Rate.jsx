@@ -2,22 +2,23 @@ import React, { useState } from 'react'
 
 import './style.css'
 
-export default ({ func }) => {
+export default ({ func, unique }) => {
   const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-  const [selected, setSelected] = useState()
+  const [selected, setSelected] = useState('')
 
   return (
     <>
-      <ul>
-        {options.map((item, key) => {
+      <ul id={unique}>
+        {options.map(item => {
+          const item2 = item + unique
           return (
-            <li key={key}>
+            <li key={`${item2}`}>
               <p>{item}</p>
               <input
                 type='radio'
-                name={item}
-                id={item}
+                name={item2}
+                id={item2}
                 checked={selected == item}
                 onChange={e => {
                   setSelected(item)

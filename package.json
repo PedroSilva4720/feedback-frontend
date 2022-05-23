@@ -8,8 +8,6 @@
     "email": "pedro.silva4720@gmail.com"
   },
   "scripts": {
-    "status": "git status",
-    "ad": "git add",
     "commit": "cz",
     "start": "react-scripts start"
   },

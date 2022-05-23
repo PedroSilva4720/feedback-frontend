@@ -3,6 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import { createPost } from '../services'
 import Rate from '../components/rate/Rate.jsx'
+import SelectItem from '../components/selectItem/SelectItem'
+import ShortInput from '../components/shortInput/ShortInput'
+import LongInput from '../components/longInput/LongInput'
 
 export default props => {
   const [from, setFrom] = useState('')
@@ -30,6 +33,7 @@ export default props => {
       comment,
     }
     const token = await createPost(data, userid)
+    alert(token)
     navigate('/create-user', { replace: true })
   }
 
@@ -38,25 +42,41 @@ export default props => {
   const serviceFunction = value => setService(value)
   const diversityFunction = value => setDiversity(value)
   const favoriteFunction = value => setFavorite(value)
+
   const priceFunction = value => setPrice(value)
-  const firstTimeFunction = value => setFirstTime(value)
-  const commentFuntion = value => setComment(value)
+  const firstTimeFunction = value => {
+    const keys = {
+      Sim: true,
+      Não: false,
+    }
+    setFirstTime(keys[value])
+  }
+  const commentFunction = value => setComment(value)
 
   return (
     <>
+      <p>{firstTime}</p>
       <form onSubmit={e => handleSubmit(e)}>
         <p>from</p>
+        <SelectItem
+          func={fromFunction}
+          options={['Café da Manhã', 'Almoço', 'PicNic']}
+        />
         <p>Avalie a Limpeza do espaço:</p>
-        <Rate func={cleanFunction} />
+        <Rate func={cleanFunction} unique='1' />
         <p>Avalie o atendimento:</p>
-        <Rate func={serviceFunction} />
+        <Rate func={serviceFunction} unique='2' />
         <p>Avalie a diversidade de animais:</p>
-        <Rate func={diversityFunction} />
-        <p>favorite</p>
+        <Rate func={diversityFunction} unique='3' />
+        <p>Qual foi seu animal favorito?</p>
+        <ShortInput func={favoriteFunction} />
         <p>Avalie o preço:</p>
-        <Rate func={priceFunction} />
-        <p>firstTime</p>
-        <p>Comment</p>
+        <Rate func={priceFunction} unique='4' />
+        <p>Sua primeira vez na Fazendinha?</p>
+        <SelectItem func={firstTimeFunction} options={['Sim', 'Não']} />
+        <p>Por fim, deixe um comentário:</p>
+        <LongInput func={commentFunction} />
+        <br />
         <button type='submit'>Enviar</button>
       </form>
     </>
