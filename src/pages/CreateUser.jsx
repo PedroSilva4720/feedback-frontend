@@ -18,7 +18,7 @@ export default props => {
 
   return (
     <>
-      <form onSubmit={e => handleSubmit(e)} autoComplete='off'>
+      <form onSubmit={handleSubmit} autoComplete='off'>
         <label htmlFor='input'>
           Nome:
           <input

@@ -23,3 +23,11 @@ export const createPost = async (data, userId) => {
   )
   return res.data
 }
+
+export const validateToken = async token => {
+  const res = await axios.post('http://localhost:9001/verify-token', {
+    token,
+  })
+
+  return res
+}
