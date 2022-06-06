@@ -1,16 +1,27 @@
 import React from 'react'
 
-export default ({ func }) => {
+import './style.css'
+
+export default ({ func, info }) => {
   return (
     <>
-      <input
-        type='text'
-        name=''
-        id=''
-        onChange={e => {
-          func(e.target.value)
-        }}
-      />
+      <div className='page'>
+        <label class='field field_v1'>
+          <textarea
+            wrap='hard'
+            type='text'
+            name={info}
+            className='field__input'
+            placeholder={info}
+            onChange={e => {
+              func(e.target.value)
+            }}
+          />
+          <span className='field__label-wrap'>
+            <span className='field__label'>{info}</span>
+          </span>
+        </label>
+      </div>
     </>
   )
 }

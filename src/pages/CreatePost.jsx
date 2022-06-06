@@ -47,30 +47,31 @@ export default props => {
 
   return (
     <>
-      <p>{firstTime}</p>
-      <form onSubmit={handleSubmit}>
-        <p>from</p>
-        <SelectItem
-          func={setFrom}
-          options={['Café da Manhã', 'Almoço', 'PicNic']}
-        />
-        <p>Avalie a Limpeza do espaço:</p>
-        <Rate func={setClean} unique='1' />
-        <p>Avalie o atendimento:</p>
-        <Rate func={setService} unique='2' />
-        <p>Avalie a diversidade de animais:</p>
-        <Rate func={setDiversity} unique='3' />
-        <p>Qual foi seu animal favorito?</p>
-        <ShortInput func={setFavorite} />
-        <p>Avalie o preço:</p>
-        <Rate func={setPrice} unique='4' />
-        <p>Sua primeira vez na Fazendinha?</p>
-        <SelectItem func={firstTimeFunction} options={['Sim', 'Não']} />
-        <p>Por fim, deixe um comentário:</p>
-        <LongInput func={setComment} />
-        <br />
-        <button type='submit'>Enviar</button>
-      </form>
+      <div className='container'>
+        <form onSubmit={handleSubmit}>
+          <p>from</p>
+          <SelectItem
+            func={setFrom}
+            options={['Café da Manhã', 'Almoço', 'PicNic']}
+          />
+          <p>Avalie a Limpeza do espaço:</p>
+          <Rate func={setClean} unique='1' />
+          <p>Avalie o atendimento:</p>
+          <Rate func={setService} unique='2' />
+          <p>Avalie a diversidade de animais:</p>
+          <Rate func={setDiversity} unique='3' />
+          <p>Qual foi seu animal favorito?</p>
+          <ShortInput func={setFavorite} info='Animal' />
+          <p>Avalie o preço:</p>
+          <Rate func={setPrice} unique='4' />
+          <p>Sua primeira vez na Fazendinha?</p>
+          <SelectItem func={firstTimeFunction} options={['Sim', 'Não']} />
+          <p>Por fim, deixe um comentário:</p>
+          <LongInput func={setComment} info='Comentário' />
+          <br />
+          <button type='submit'>Enviar</button>
+        </form>
+      </div>
     </>
   )
 }

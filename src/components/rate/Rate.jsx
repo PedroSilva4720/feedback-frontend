@@ -16,6 +16,7 @@ export default ({ func, unique }) => {
             <li key={`${item2}`}>
               <p>{item}</p>
               <input
+                className='radio'
                 type='radio'
                 name={item2}
                 id={item2}
@@ -26,6 +27,7 @@ export default ({ func, unique }) => {
                 }}
                 value={selected}
               />
+              <span class='design'></span>
             </li>
           )
         })}

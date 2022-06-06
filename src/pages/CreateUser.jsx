@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import ShortInput from '../components/shortInput/ShortInput.jsx'
 
 import { createUser } from '../services/index.js'
 
@@ -18,41 +19,26 @@ export default props => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} autoComplete='off'>
-        <label htmlFor='input'>
-          Nome:
-          <input
-            type='text'
-            name='nome'
-            onChange={event => setName(event.target.value)}
-          />
-        </label>
-        <br />
-        <label htmlFor='input'>
-          Email:
-          <input
-            type='email'
-            name='email'
-            onChange={event => setEmail(event.target.value)}
-          />
-        </label>
-        <br />
-        <label htmlFor='input'>
-          Telefone:
-          <input
+      <div className='container'>
+        <form onSubmit={handleSubmit} autoComplete='off'>
+          <ShortInput type='text' info='Nome' func={setName} />
+          <br />
+          <ShortInput type='email' info='Email' func={setEmail} />
+          <br />
+          <ShortInput
             type='number'
-            name='phone'
-            onChange={event => setPhone(event.target.value)}
+            info='Telefone'
+            func={setPhone}
             onKeyPress={event => {
               if (!/[0-9]/.test(event.key)) {
                 event.preventDefault()
               }
             }}
           />
-        </label>
-        <br />
-        <button type='submit'>Enviar</button>
-      </form>
+          <br />
+          <button type='submit'>Enviar</button>
+        </form>
+      </div>
     </>
   )
 }
