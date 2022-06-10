@@ -1,11 +1,14 @@
+/* .list {} */
+
 li {
-    text-decoration: none;
-    list-style: none;
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    list-style: none;
     margin: 0px 10px;
     align-items: center;
 }
+
 
 li p {
     margin: 0;
@@ -20,15 +23,6 @@ ul {
     display: flex;
 }
 
-/* .radio {
-
-    /* transform: translate(-50%, -50%); */
-
-/* } */
-
-*/
-
-/* .design */
 .design {
     width: 16px;
     height: 16px;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import ShortInput from '../components/shortInput/ShortInput.jsx'
 
+import ShortInput from '../components/shortInput/ShortInput.jsx'
 import { createUser } from '../services/index.js'
 
 export default props => {

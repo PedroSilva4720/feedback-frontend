@@ -1,14 +1,12 @@
 import React from 'react'
 
-import './style.css'
-
 export default ({ func, info }) => {
   return (
     <>
       <div className='page'>
         <label className='field field_v1'>
           <input
-            type='text'
+            type='password'
             name={info}
             className='field__input'
             placeholder={info}

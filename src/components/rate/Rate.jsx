@@ -9,11 +9,11 @@ export default ({ func, unique }) => {
 
   return (
     <>
-      <ul id={unique}>
+      <ul className='rate' id={unique}>
         {options.map(item => {
           const item2 = item + unique
           return (
-            <li key={`${item2}`}>
+            <li className='list' key={`${item2}`}>
               <p>{item}</p>
               <input
                 className='radio'

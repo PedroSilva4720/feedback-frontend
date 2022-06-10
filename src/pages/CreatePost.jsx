@@ -49,7 +49,7 @@ export default props => {
     <>
       <div className='container'>
         <form onSubmit={handleSubmit}>
-          <p>from</p>
+          <p>De qual atividade você pertence?</p>
           <SelectItem
             func={setFrom}
             options={['Café da Manhã', 'Almoço', 'PicNic']}
