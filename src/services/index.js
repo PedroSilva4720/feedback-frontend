@@ -1,11 +1,14 @@
 import axios from 'axios'
 
-export const createUser = async (name, email, phone) => {
-  const res = await axios.post('http://localhost:9001/create-user', {
-    name,
-    email,
-    phone,
-  })
+export const createUser = async (name, email, phone, companyId) => {
+  const res = await axios.post(
+    `http://localhost:9001/create-user/${companyId}`,
+    {
+      name,
+      email,
+      phone,
+    }
+  )
   return res.data
 }
 
@@ -39,21 +42,43 @@ export const login = async (username, password) => {
       password,
     })
     .then(res => {
-      return { status: res.status, message: res.data.managerToken }
+      return { status: res.status, response: res.data }
     })
     .catch(err => {
-      return { status: err.response.status, message: err.response.data }
+      return { status: err.response.status, response: err.response.data }
     })
 
   return res
 }
 
-export const getDashboardItems = async jwt => {
-  const res = await axios.get('http://localhost:9001/feedbacks', {
-    headers: {
-      auth: jwt,
-    },
-  })
+export const getDashboardItems = async (jwt, companyId, managerId) => {
+  try {
+    const res = await axios.get(
+      `http://localhost:9001/dashboard/${companyId}`,
+      {
+        headers: {
+          auth: jwt,
+          manager: managerId,
+        },
+      }
+    )
+
+    const resp = res.data.map(item => {
+      if (item.active) {
+        return item
+      } else {
+      }
+    })
+    return resp
+  } catch (e) {
+    return 'error'
+  }
+}
+
+export const getQuests = async companyId => {
+  const res = await axios.get(`http://localhost:9001/get-quests/${companyId}`)
 
   return res.data
 }
+
+export const getQuestsName = async () => {}

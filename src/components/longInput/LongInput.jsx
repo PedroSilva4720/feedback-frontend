@@ -2,11 +2,11 @@ import React from 'react'
 
 import './style.css'
 
-export default ({ func, info }) => {
+export default ({ func, info, quest }) => {
   return (
     <>
       <div className='page'>
-        <label class='field field_v1'>
+        <label className='field field_v1'>
           <textarea
             wrap='hard'
             type='text'

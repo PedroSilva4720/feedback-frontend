@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import './style.css'
 
-export default ({ func, unique }) => {
+export default ({ func, unique, quest }) => {
   const options = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   const [selected, setSelected] = useState('')
@@ -27,7 +27,7 @@ export default ({ func, unique }) => {
                 }}
                 value={selected}
               />
-              <span class='design'></span>
+              <span className='design'></span>
             </li>
           )
         })}

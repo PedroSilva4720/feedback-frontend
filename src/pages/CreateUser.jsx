@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import ShortInput from '../components/shortInput/ShortInput.jsx'
 import { createUser } from '../services/index.js'
 
 export default props => {
+  const { companyid } = useParams()
   const navigate = useNavigate()
 
   const [name, setName] = useState('')
@@ -13,8 +14,8 @@ export default props => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const userToken = await createUser(name, email, phone)
-    navigate(`/create-post/${userToken}`, { replace: true })
+    const userToken = await createUser(name, email, phone, companyid)
+    navigate(`/create-post/${companyid}/${userToken}`, { replace: true })
   }
 
   return (

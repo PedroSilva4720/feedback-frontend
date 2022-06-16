@@ -2,7 +2,7 @@ import React from 'react'
 
 import './style.css'
 
-export default ({ func, options }) => {
+export default ({ func, options, quest }) => {
   return (
     <>
       <div className='box'>
