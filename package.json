@@ -9,6 +9,7 @@
   },
   "scripts": {
     "commit": "cz",
+    "postcommit": "git push -u origin main",
     "start": "react-scripts start"
   },
   "config": {
