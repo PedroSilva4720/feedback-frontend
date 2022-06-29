@@ -49,13 +49,13 @@ export default () => {
   getQuests(companyid).then(setQuests)
 
   const keys = {
-    longInput: (func, options) => <LongInput func={func} />,
-    rate: (func, options) => <Rate func={func} unique={options} />,
+    longInput: (func, value) => <LongInput func={func} info={value} />,
+    rate: (func, value) => <Rate func={func} unique={value} />,
     selectItem: (func, options) => {
       const opt = options.toString().split(',')
       return <SelectItem func={func} options={opt} />
     },
-    shortInput: (func, options) => <ShortInput func={func} />,
+    shortInput: (func, value) => <ShortInput func={func} info={value} />,
   }
 
   if (quests) {
