@@ -15,10 +15,10 @@ export default () => {
   const handleSubmit = async e => {
     e.preventDefault()
     const response = await login(username, password)
-    const { managerToken, companyId, managerId } = response.response
+    const { managerToken, companyId } = response.response
     if (response.status == 200) {
       localStorage.setItem('auth', managerToken)
-      navigate(`/dashboard/${companyId}/${managerId}`, { replace: true })
+      navigate(`/dashboard/${companyId}`, { replace: true })
     }
   }
 

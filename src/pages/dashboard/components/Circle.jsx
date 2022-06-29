@@ -8,11 +8,11 @@ export default ({ label, percentage, colour }) => {
     return (
       <circle
         r={r}
-        cx={100}
-        cy={100}
+        cx={50}
+        cy={50}
         fill='transparent'
         stroke={strokePct !== circ ? colour : ''} // remove colour as 0% sets full circumference
-        strokeWidth={'1rem'}
+        strokeWidth={'0.9rem'}
         strokeDasharray={circ}
         strokeDashoffset={percentage ? strokePct : 0}
       ></circle>
@@ -26,7 +26,7 @@ export default ({ label, percentage, colour }) => {
         y='50%'
         dominantBaseline='central'
         textAnchor='middle'
-        fontSize={'1em'}
+        fontSize={'0.9em'}
       >
         {percentage / 10}
       </text>
@@ -37,18 +37,18 @@ export default ({ label, percentage, colour }) => {
     return (
       <text
         x='50%'
-        y='20%'
+        y='5%'
         dominantBaseline='central'
         textAnchor='middle'
-        fontSize={'1em'}
+        fontSize={'0.9em'}
       >
         {label}
       </text>
     )
   }
   return (
-    <svg width={200} height={200}>
-      <g transform={`rotate(-90 ${'100 100'})`}>
+    <svg width={100} height={100}>
+      <g transform={`rotate(-90 ${'50 50'})`}>
         <Circle colour='lightgrey' />
         <Circle colour={colour} percentage={percentage} />
       </g>

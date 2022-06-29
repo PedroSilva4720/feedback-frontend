@@ -16,7 +16,7 @@ export default () => (
       <Route path='/create-post/:companyid/:userid' element={<CreatePost />} />
       <Route path='/validate' element={<ValidateToken />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/dashboard/:companyid/:managerid' element={<Dashboard />} />
+      <Route path='/dashboard/:companyid/' element={<Dashboard />} />
     </Routes>
   </Router>
 )

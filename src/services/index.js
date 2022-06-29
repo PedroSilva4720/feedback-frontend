@@ -51,14 +51,13 @@ export const login = async (username, password) => {
   return res
 }
 
-export const getDashboardItems = async (jwt, companyId, managerId) => {
+export const getDashboardItems = async (jwt, companyId) => {
   try {
     const res = await axios.get(
       `http://localhost:9001/dashboard/${companyId}`,
       {
         headers: {
           auth: jwt,
-          manager: managerId,
         },
       }
     )

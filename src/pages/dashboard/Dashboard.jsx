@@ -6,6 +6,7 @@ import Feedbacks from './components/Feedbacks'
 import Average from './components/Average'
 
 import './style.css'
+import NavBar from '../../pagesComponents/navBar'
 
 export default () => {
   const navigate = useNavigate()
@@ -13,11 +14,11 @@ export default () => {
   const [items, setItems] = useState([])
   const [quests, setQuests] = useState()
 
-  const { companyid, managerid } = useParams()
+  const { companyid } = useParams()
 
   const jwt = localStorage.getItem('auth')
 
-  getDashboardItems(jwt, companyid, managerid).then(res => {
+  getDashboardItems(jwt, companyid).then(res => {
     setItems(res)
   })
 
@@ -31,6 +32,7 @@ export default () => {
 
   return (
     <>
+      <NavBar />
       <p>Dashboard</p>
       {items && quests ? <Average list={items} quests={quests} /> : <></>}
       {items && quests ? <Feedbacks list={items} quests={quests} /> : <></>}

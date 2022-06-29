@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react'
 import Circle from './Circle'
+import chroma from 'chroma-js'
 
 export default ({ list, quests }) => {
+  const colors = chroma.scale(['#f55f5f', '#91f55f']).mode('lch').colors(100)
+
   let arr = [
     [[], 0, ''],
     [[], 0, ''],
@@ -31,7 +34,7 @@ export default ({ list, quests }) => {
             <Circle
               label={quests.quest0}
               percentage={(arr[0][1] / arr[0][0].length).toFixed(2) * 10}
-              colour='#ff9f00'
+              colour={colors[(arr[0][1] / arr[0][0].length).toFixed()]}
             />
           </div>
         </>
@@ -54,9 +57,8 @@ export default ({ list, quests }) => {
             <Circle
               label={quests.quest1}
               percentage={(arr[1][1] / arr[1][0].length).toFixed(2) * 10}
-              colour='#ff9f00'
+              colour={colors[(arr[1][1] / arr[1][0].length).toFixed(1) * 10]}
             />
-            <p>{(arr[1][1] / arr[1][0].length).toFixed(2)}</p>
           </div>
         </>
       )
@@ -75,7 +77,7 @@ export default ({ list, quests }) => {
               <Circle
                 label={quests.quest2}
                 percentage={(arr[2][1] / arr[2][0].length).toFixed(2) * 10}
-                colour='#ff9f00'
+                colour={colors[(arr[2][1] / arr[2][0].length).toFixed(1) * 10]}
               />
             </div>
           </>
@@ -97,7 +99,7 @@ export default ({ list, quests }) => {
               <Circle
                 label={quests.quest3}
                 percentage={(arr[3][1] / arr[3][0].length).toFixed(2) * 10}
-                colour='#ff9f00'
+                colour={colors[(arr[3][1] / arr[3][0].length).toFixed(1) * 10]}
               />
             </div>
           </>
@@ -118,7 +120,7 @@ export default ({ list, quests }) => {
               <Circle
                 label={quests.quest4}
                 percentage={(arr[4][1] / arr[4][0].length).toFixed(2) * 10}
-                colour='#ff9f00'
+                colour={colors[(arr[4][1] / arr[4][0].length).toFixed(1) * 10]}
               />
             </div>
           </>
@@ -139,7 +141,7 @@ export default ({ list, quests }) => {
               <Circle
                 label={quests.quest5}
                 percentage={(arr[5][1] / arr[5][0].length).toFixed(2) * 10}
-                colour='#ff9f00'
+                colour={colors[(arr[5][1] / arr[5][0].length).toFixed(1) * 10]}
               />
             </div>
           </>
@@ -161,7 +163,7 @@ export default ({ list, quests }) => {
               <Circle
                 label={quests.quest6}
                 percentage={(arr[6][1] / arr[6][0].length).toFixed(2) * 10}
-                colour='#ff9f00'
+                colour={colors[(arr[6][1] / arr[6][0].length).toFixed(1) * 10]}
               />
             </div>
           </>
@@ -182,7 +184,7 @@ export default ({ list, quests }) => {
               <Circle
                 label={quests.quest7}
                 percentage={(arr[7][1] / arr[7][0].length).toFixed(2) * 10}
-                colour='#ff9f00'
+                colour={colors[(arr[7][1] / arr[7][0].length).toFixed(1) * 10]}
               />
             </div>
           </>
@@ -204,7 +206,7 @@ export default ({ list, quests }) => {
               <Circle
                 label={quests.quest8}
                 percentage={(arr[8][1] / arr[8][0].length).toFixed(2) * 10}
-                colour='#ff9f00'
+                colour={colors[(arr[8][1] / arr[8][0].length).toFixed(1) * 10]}
               />
             </div>
           </>
@@ -225,7 +227,7 @@ export default ({ list, quests }) => {
               <Circle
                 label={quests.quest9}
                 percentage={(arr[9][1] / arr[9][0].length).toFixed(2) * 10}
-                colour='#ff9f00'
+                colour={colors[(arr[9][1] / arr[9][0].length).toFixed(1) * 10]}
               />
             </div>
           </>
