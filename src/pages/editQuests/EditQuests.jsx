@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 import './styles.css'
 
 import SelectItem from '../../components/selectItem/SelectItem'
 import ShortInput from '../../components/shortInput/ShortInput'
+import NavBar from '../dashboard/components/NavBar'
+
+import { sendQuestsConfigs } from '../../services'
 
 export default () => {
   const [quest00, setQ00] = useState('')
@@ -74,6 +78,10 @@ export default () => {
     [setQ90, setQ91, setQ92, setQ83],
   ]
 
+  const { companyid } = useParams()
+
+  const auth = localStorage.getItem('auth')
+
   for (let i = 0; i <= 9; i++) {
     resp.push(
       <>
@@ -84,9 +92,9 @@ export default () => {
           <p>Selecione o tipo</p>
           <SelectItem
             func={questsFunc[i][1]}
-            options={['Selecionar', 'Digitar Curto', 'Digitar Longo', 'Nota']}
+            options={['selectItem', 'shortInput', 'longInput', 'rate']}
           />
-          {quests[i] == 'Selecionar' ? (
+          {quests[i] == 'selectItem' ? (
             <>
               <p>Digite as opções separadas por vírgula</p>
               <ShortInput func={questsFunc[i][2]} info='Opções' />
@@ -100,11 +108,62 @@ export default () => {
       </>
     )
   }
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    sendQuestsConfigs(companyid, auth, {
+      quest0: quest00,
+      quest0Type: quest01,
+      quest0Content: quest01 == 'selectItem' ? quest02 : quest00,
+      quest0Title: quest03,
+      quest1: quest10,
+      quest1Type: quest11,
+      quest1Content: quest11 == 'selectItem' ? quest12 : quest10,
+      quest1Title: quest13,
+      quest2: quest20,
+      quest2Type: quest21,
+      quest2Content: quest21 == 'selectItem' ? quest22 : quest20,
+      quest2Title: quest23,
+      quest3: quest30,
+      quest3Type: quest31,
+      quest3Content: quest31 == 'selectItem' ? quest32 : quest30,
+      quest3Title: quest33,
+      quest4: quest40,
+      quest4Type: quest41,
+      quest4Content: quest41 == 'selectItem' ? quest42 : quest40,
+      quest4Title: quest43,
+      quest5: quest50,
+      quest5Type: quest51,
+      quest5Content: quest51 == 'selectItem' ? quest52 : quest50,
+      quest5Title: quest53,
+      quest6: quest60,
+      quest6Type: quest61,
+      quest6Content: quest61 == 'selectItem' ? quest62 : quest60,
+      quest6Title: quest63,
+      quest7: quest70,
+      quest7Type: quest71,
+      quest7Content: quest71 == 'selectItem' ? quest72 : quest70,
+      quest7Title: quest73,
+      quest8: quest80,
+      quest8Type: quest81,
+      quest8Content: quest81 == 'selectItem' ? quest82 : quest80,
+      quest8Title: quest83,
+      quest9: quest90,
+      quest9Type: quest91,
+      quest9Content: quest91 == 'selectItem' ? quest92 : quest90,
+      quest9Title: quest93,
+    })
+  }
+
   return (
     <>
-      <div className='container'>
-        <div className='quests'>{resp.map(item => item)}</div>
-      </div>
+      <NavBar />
+      <form onSubmit={handleSubmit}>
+        <div className='container'>
+          <div className='quests'>{resp.map(item => item)}</div>
+        </div>
+        <button type='submit'>Salvar</button>
+      </form>
     </>
   )
 }

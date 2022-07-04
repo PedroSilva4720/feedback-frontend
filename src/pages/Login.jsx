@@ -28,6 +28,7 @@ export default () => {
         <form onSubmit={handleSubmit}>
           <ShortInput func={setUsername} info={'Login'} />
           <PassInput func={setPassword} info={'Senha'} />
+          <br />
           <button type='submit'>Enviar</button>
         </form>
       </div>

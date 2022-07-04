@@ -8,6 +8,7 @@
     "email": "pedro.silva4720@gmail.com"
   },
   "scripts": {
+    "precommit": "git add .",
     "commit": "cz",
     "postcommit": "git push -u origin main",
     "start": "react-scripts start"

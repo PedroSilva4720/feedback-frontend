@@ -80,4 +80,14 @@ export const getQuests = async companyId => {
   return res.data
 }
 
-export const getQuestsName = async () => {}
+export const sendQuestsConfigs = async (companyId, auth, data) => {
+  await axios.post(
+    `http://localhost:9001/create-quest-management/${companyId}`,
+    { ...data },
+    {
+      headers: {
+        auth,
+      },
+    }
+  )
+}

@@ -1,0 +1,36 @@
+.navBar {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-content: space-between;
+    padding: 20px 0px;
+    background-color: #457498;
+    text-decoration: none;
+    color: white;
+}
+
+.navBar .links {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navBar .logout {
+    text-align: end;
+    margin: 0px 15px;
+}
+
+.navBar a {
+    text-decoration: none;
+    color: white;
+}
+
+.navBar a:hover {
+    color: #125488;
+    transition: color 0.5s;
+}
+
+.average {
+    border: 2px solid #125488;
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+}

@@ -6,7 +6,7 @@ import Feedbacks from './components/Feedbacks'
 import Average from './components/Average'
 
 import './style.css'
-import NavBar from '../../pagesComponents/navBar'
+import NavBar from './components/NavBar'
 
 export default () => {
   const navigate = useNavigate()
@@ -22,9 +22,9 @@ export default () => {
     setItems(res)
   })
 
-  if (items == 'error') {
-    navigate(`/login`, { replace: true })
-  }
+  // if (items == 'error') {
+  //   navigate(`/login`, { replace: true })
+  // }
 
   getQuests(companyid).then(res => {
     setQuests(res)
@@ -34,8 +34,10 @@ export default () => {
     <>
       <NavBar />
       <p>Dashboard</p>
-      {items && quests ? <Average list={items} quests={quests} /> : <></>}
-      {items && quests ? <Feedbacks list={items} quests={quests} /> : <></>}
+      <div className='dashboard-content'>
+        {items && quests ? <Feedbacks list={items} quests={quests} /> : <></>}
+        {items && quests ? <Average list={items} quests={quests} /> : <></>}
+      </div>
     </>
   )
 }
