@@ -1,43 +1,48 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 
 import { getDashboardItems, getQuests } from '../../services'
 import Feedbacks from './components/Feedbacks'
 import Average from './components/Average'
+import NavBar from './components/NavBar'
+import Auth from '../../modules/Auth'
 
 import './style.css'
-import NavBar from './components/NavBar'
 
 export default () => {
-  const navigate = useNavigate()
+  const location = useLocation()
 
   const [items, setItems] = useState([])
   const [quests, setQuests] = useState()
 
   const { companyid } = useParams()
 
-  const jwt = localStorage.getItem('auth')
+  const er = /^([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_=]+)\.([a-zA-Z0-9_\-\+\/=]*)/
 
-  getDashboardItems(jwt, companyid).then(res => {
-    setItems(res)
-  })
+  useEffect(() => {
+    const jwt = localStorage.getItem('auth')
 
-  // if (items == 'error') {
-  //   navigate(`/login`, { replace: true })
-  // }
+    if (!!er.exec(jwt)) {
+      getDashboardItems(jwt, companyid).then(res => {
+        setItems(res)
+      })
+    }
 
-  getQuests(companyid).then(res => {
-    setQuests(res)
-  })
+    getQuests(companyid).then(res => {
+      setQuests(res)
+    })
+  }, [location])
 
   return (
     <>
-      <NavBar />
-      <p>Dashboard</p>
-      <div className='dashboard-content'>
-        {items && quests ? <Feedbacks list={items} quests={quests} /> : <></>}
-        {items && quests ? <Average list={items} quests={quests} /> : <></>}
-      </div>
+      <Auth>
+        <NavBar />
+        <p>Dashboard</p>
+        <div className='dashboard-content'>
+          {items && quests ? <Feedbacks list={items} quests={quests} /> : <></>}
+          {items && quests ? <Average list={items} quests={quests} /> : <></>}
+        </div>
+      </Auth>
     </>
   )
 }

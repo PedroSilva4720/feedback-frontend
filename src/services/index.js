@@ -91,3 +91,13 @@ export const sendQuestsConfigs = async (companyId, auth, data) => {
     }
   )
 }
+
+export const refreshToken = async token => {
+  const res = await axios
+    .get('http://localhost:9001/verify-token', {
+      headers: { auth: token },
+    })
+    .catch(err => 'error')
+
+  return res.data
+}

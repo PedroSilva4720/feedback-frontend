@@ -9,17 +9,20 @@ import ShortInput from '../components/shortInput/ShortInput.jsx'
 export default () => {
   const navigate = useNavigate()
 
+  localStorage.removeItem('auth')
+
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault()
-    const response = await login(username, password)
-    const { managerToken, companyId } = response.response
-    if (response.status == 200) {
-      localStorage.setItem('auth', managerToken)
-      navigate(`/dashboard/${companyId}`, { replace: true })
-    }
+    login(username, password).then(response => {
+      const { managerToken, companyId } = response.response
+      if (response.status == 200) {
+        localStorage.setItem('auth', managerToken)
+        navigate(`/dashboard/${companyId}`, { replace: true })
+      }
+    })
   }
 
   return (

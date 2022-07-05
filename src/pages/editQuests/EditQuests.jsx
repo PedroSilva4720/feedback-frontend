@@ -8,6 +8,7 @@ import ShortInput from '../../components/shortInput/ShortInput'
 import NavBar from '../dashboard/components/NavBar'
 
 import { sendQuestsConfigs } from '../../services'
+import Auth from '../../modules/Auth'
 
 export default () => {
   const [quest00, setQ00] = useState('')
@@ -157,13 +158,15 @@ export default () => {
 
   return (
     <>
-      <NavBar />
-      <form onSubmit={handleSubmit}>
-        <div className='container'>
-          <div className='quests'>{resp.map(item => item)}</div>
-        </div>
-        <button type='submit'>Salvar</button>
-      </form>
+      <Auth>
+        <NavBar />
+        <form onSubmit={handleSubmit}>
+          <div className='container'>
+            <div className='quests'>{resp.map(item => item)}</div>
+          </div>
+          <button type='submit'>Salvar</button>
+        </form>
+      </Auth>
     </>
   )
 }

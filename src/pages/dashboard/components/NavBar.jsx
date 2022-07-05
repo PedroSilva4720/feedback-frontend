@@ -19,6 +19,7 @@ export default () => {
         <div className='links'>
           <Link to={`/editquests/${companyid}`}>Editar</Link>
           <Link to={`/dashboard/${companyid}`}>Dashboard</Link>
+          <Link to={`/create-user/${companyid}`}>Criar Feedback</Link>
         </div>
         <a className='logout' onClick={logout}>
           Logout
