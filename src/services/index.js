@@ -101,3 +101,11 @@ export const refreshToken = async token => {
 
   return res.data
 }
+
+export const useToken = async token => {
+  const res = axios.post('http://localhost:9001/verify-token', {
+    token,
+  })
+
+  return res
+}
