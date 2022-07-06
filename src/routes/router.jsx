@@ -9,6 +9,7 @@ import Login from '../pages/Login.jsx'
 import Dashboard from '../pages/dashboard/Dashboard.jsx'
 import EditQuests from '../pages/editQuests/EditQuests.jsx'
 import UseToken from '../pages/useToken/UseToken.jsx'
+import Alert from '../icons/Alert.jsx'
 
 export default () => (
   <Router>
@@ -21,6 +22,10 @@ export default () => (
       <Route path='/verify' element={<UseToken />} />
       <Route path='/dashboard/:companyid/' element={<Dashboard />} />
       <Route path='/editquests/:companyid/' element={<EditQuests />} />
+      <Route
+        path='/positive'
+        element={<Alert type='negative' message='Texto negativo' />}
+      />
     </Routes>
   </Router>
 )
