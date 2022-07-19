@@ -5,17 +5,21 @@ form {
 
 
 button {
-    width: 230px;
-    height: 60px;
+
     border: none;
     outline: none;
     background: #125488;
     color: #fff;
-    font-size: 22px;
     border-radius: 5px;
     text-align: center;
     box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
     cursor: pointer;
+}
+
+.btn-submit {
+    font-size: 22px;
+    width: 230px;
+    height: 60px;
 }

@@ -37,10 +37,25 @@ export default () => {
     <>
       <Auth>
         <NavBar />
-        <p>Dashboard</p>
         <div className='dashboard-content'>
-          {items && quests ? <Feedbacks list={items} quests={quests} /> : <></>}
-          {items && quests ? <Average list={items} quests={quests} /> : <></>}
+          {items.every(element => element) && items.length > 0 ? (
+            <>
+              {items && quests ? (
+                <Feedbacks list={items} quests={quests} />
+              ) : (
+                <></>
+              )}
+              {items && quests ? (
+                <Average list={items} quests={quests} />
+              ) : (
+                <></>
+              )}
+            </>
+          ) : (
+            <>
+              <h4>Não há feedbacks ainda.</h4>
+            </>
+          )}
         </div>
       </Auth>
     </>

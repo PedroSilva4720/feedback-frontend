@@ -18,7 +18,9 @@ export default () => {
       <div className='container'>
         <form onSubmit={handleSubmit}>
           <ShortInput func={setToken} info='Token' />
-          <button type='submit'>Enviar</button>
+          <button className='btn-submit' type='submit'>
+            Enviar
+          </button>
         </form>
       </div>
     </>

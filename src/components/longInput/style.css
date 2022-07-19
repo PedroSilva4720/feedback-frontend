@@ -1,6 +1,6 @@
 textarea {
     border: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     outline: none;
 
     -webkit-box-shadow: none;

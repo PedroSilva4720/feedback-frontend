@@ -37,7 +37,9 @@ export default props => {
             }}
           />
           <br />
-          <button type='submit'>Enviar</button>
+          <button className='btn-submit' type='submit'>
+            Enviar
+          </button>
         </form>
       </div>
     </>

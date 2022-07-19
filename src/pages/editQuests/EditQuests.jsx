@@ -164,7 +164,9 @@ export default () => {
           <div className='container'>
             <div className='quests'>{resp.map(item => item)}</div>
           </div>
-          <button type='submit'>Salvar</button>
+          <button className='btn-submit' type='submit'>
+            Salvar
+          </button>
         </form>
       </Auth>
     </>

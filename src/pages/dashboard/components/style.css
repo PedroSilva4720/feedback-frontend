@@ -1,6 +1,6 @@
 .navBar {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 2fr 3fr;
     justify-content: space-between;
     padding: 20px 0px;
     background-color: #457498;
@@ -8,12 +8,15 @@
     color: white;
 }
 
+
+
 .navBar .links {
     display: flex;
     justify-content: space-evenly;
 }
 
 .navBar .logout {
+    cursor: pointer;
     text-align: end;
     margin: 0px 15px;
 }
@@ -29,8 +32,12 @@
 }
 
 .average {
-    border: 2px solid #125488;
+    border: 1px solid #125488;
     margin: 10px;
     display: flex;
     justify-content: space-around;
+}
+
+.dashboard-content h4 {
+    margin: 20px 0 0 20px;
 }

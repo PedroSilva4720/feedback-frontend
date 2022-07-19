@@ -32,7 +32,9 @@ export default () => {
           <ShortInput func={setUsername} info={'Login'} />
           <PassInput func={setPassword} info={'Senha'} />
           <br />
-          <button type='submit'>Enviar</button>
+          <button className='btn-submit' type='submit'>
+            Enviar
+          </button>
         </form>
       </div>
     </>

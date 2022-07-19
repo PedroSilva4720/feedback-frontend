@@ -21,6 +21,7 @@ export default () => {
           <Link to={`/dashboard/${companyid}`}>Dashboard</Link>
           <Link to={`/create-user/${companyid}`}>Criar Feedback</Link>
           <Link to='/verify'>Verificar</Link>
+          <Link to={`/configs/${companyid}`}>Configurações</Link>
         </div>
         <a className='logout' onClick={logout}>
           Logout

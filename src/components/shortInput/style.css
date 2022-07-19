@@ -34,8 +34,8 @@
 
 .field__input {
   box-sizing: border-box;
-  width: var(--fieldWidth, 100%);
-  height: var(--fieldHeight, 3rem);
+  min-width: var(--fieldWidth, 100%);
+  min-height: var(--fieldHeight, 3rem);
   padding: var(--fieldPaddingTop, 1.25rem) var(--uiFieldPaddingRight) var(--fieldPaddingBottom, .5rem) var(--uiFieldPaddingLeft);
   border-bottom: var(--uiFieldBorderWidth) solid var(--fieldBorderColor, rgba(0, 0, 0, .25));
 }
@@ -79,7 +79,7 @@
 .field__label-wrap::after {
   content: "";
   box-sizing: border-box;
-  width: 100%;
+  min-width: 100%;
   height: 0;
   opacity: 0;
 

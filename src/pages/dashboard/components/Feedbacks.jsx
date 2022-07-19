@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default ({ list, quests }) => {
   const tags = quests
@@ -21,7 +21,7 @@ export default ({ list, quests }) => {
       <ul className='ul-dashboard'>
         {list.map((item, index) => {
           return item ? (
-            <li key={`${item.id}${index}`} className='li-dashboard'>
+            <li key={`${item.id}${index}${item.id}`} className='li-dashboard'>
               {item.quest0 ? (
                 <React.Fragment key={`${item.id}${index}${tags[0]}`}>
                   <h4 className='h4-dashboard'>{tags[0]}</h4>

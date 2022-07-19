@@ -62,12 +62,10 @@ export const getDashboardItems = async (jwt, companyId) => {
       }
     )
 
-    const resp = res.data.map(item => {
-      if (item.active) {
-        return item
-      } else {
-      }
-    })
+    let resp = await res.data.map(item => (item.active ? item : null))
+
+    resp = resp.filter(Boolean)
+
     return resp
   } catch (e) {
     return 'error'
@@ -93,13 +91,14 @@ export const sendQuestsConfigs = async (companyId, auth, data) => {
 }
 
 export const refreshToken = async token => {
-  const res = await axios
-    .get('http://localhost:9001/verify-token', {
+  try {
+    const res = await axios.get('http://localhost:9001/verify-token', {
       headers: { auth: token },
     })
-    .catch(err => 'error')
-
-  return res.data
+    return res.data
+  } catch (err) {
+    return 'error'
+  }
 }
 
 export const useToken = async token => {
@@ -108,4 +107,32 @@ export const useToken = async token => {
   })
 
   return res
+}
+
+export const setMarkdownStatus = async (status, companyId, jwt) => {
+  const res = await axios.post(
+    `http://localhost:9001/edit-markdown-status/${companyId}`,
+    { status },
+    { headers: { auth: jwt } }
+  )
+
+  return res
+}
+export const setTokenStatus = async (status, companyId, jwt) => {
+  const res = await axios.post(
+    `http://localhost:9001/edit-token-status/${companyId}`,
+    { status },
+    { headers: { auth: jwt } }
+  )
+
+  return res
+}
+
+export const getConfigsDefaultState = async (companyId, jwt) => {
+  const res = await axios.get(
+    `http://localhost:9001/get-configs-default-status/${companyId}`,
+    { headers: { auth: jwt } }
+  )
+
+  return res.data
 }
