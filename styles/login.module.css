@@ -1,0 +1,38 @@
+.btn_submit {
+    font-size: 22px;
+    width: 230px;
+    height: 60px;
+}
+
+
+.btn_submit:focus {
+    outline-style: none;
+}
+
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn_submit {
+
+    border: none;
+    outline: none;
+    background: #125488;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}

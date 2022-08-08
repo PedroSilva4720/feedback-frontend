@@ -1,0 +1,14 @@
+.li-dashboard {
+    border: 2px solid #125488;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.h4-dashboard {
+    margin: 0;
+}
+
+.dashboard_content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}

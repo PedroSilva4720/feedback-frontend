@@ -1,0 +1,87 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    list-style: none;
+    margin: 0px 10px;
+    align-items: center;
+}
+
+
+.list .title {
+    margin: 0;
+}
+
+.list input {
+    margin: 0;
+    border-radius: 100%;
+}
+
+.rate {
+    display: flex;
+}
+
+.design {
+    width: 16px;
+    height: 16px;
+
+    border: 1px solid var(--other);
+    border-radius: 100%;
+    margin-right: 16px;
+
+    position: relative;
+}
+
+.design::before,
+.design::after {
+    content: "";
+    display: block;
+
+    width: inherit;
+    height: inherit;
+
+    border-radius: inherit;
+
+    position: absolute;
+    transform: scale(0);
+    transform-origin: center center;
+}
+
+.design:before {
+    background: var(--other);
+    opacity: 0;
+    transition: .3s;
+}
+
+.design::after {
+    background: var(--primary);
+    opacity: .4;
+    transition: .6s;
+}
+
+.radio:checked+.design::before {
+    opacity: 1;
+    transform: scale(.6);
+}
+
+
+/* other states */
+.radio:hover+.design,
+.radio:focus+.design {
+    border: 1px solid var(--primary);
+}
+
+.radio:hover+.design:before,
+.radio:focus+.design:before {
+    background: var(--primary);
+}
+
+.radio:hover~.text {
+    color: var(--primary);
+}
+
+.radio:focus+.design::after,
+.radio:active+.design::after {
+    opacity: .1;
+    transform: scale(2.6);
+}

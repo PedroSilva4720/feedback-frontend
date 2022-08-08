@@ -11,7 +11,10 @@
     "precommit": "git add .",
     "commit": "cz",
     "postcommit": "git push -u origin main",
-    "start": "react-scripts start"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "config": {
     "commitizen": {
@@ -27,15 +30,15 @@
   "dependencies": {
     "axios": "^0.27.2",
     "chroma-js": "^2.4.2",
+    "next": "^12.2.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-markdown": "^8.0.3",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "^5.0.1",
     "react-toastify": "^9.0.5",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
+    "babel-plugin-module-resolver": "^4.1.0",
     "commitizen": "^4.2.4",
     "dotenv": "^16.0.1",
     "fs": "^0.0.1-security",
