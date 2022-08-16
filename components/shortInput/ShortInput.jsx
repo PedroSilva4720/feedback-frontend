@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-import styles from "./ShortInput.module.css";
+import styles from './ShortInput.module.css'
 
 export default function ShortInput({ func, info }) {
   return (
@@ -8,12 +8,12 @@ export default function ShortInput({ func, info }) {
       <div className={styles.page}>
         <label className={styles.field}>
           <input
-            type="text"
+            type='text'
             name={info}
             className={styles.field__input}
             placeholder={info}
-            onChange={(e) => {
-              func(e.target.value);
+            onChange={e => {
+              func(e.target.value)
             }}
           />
           <span className={styles.field__label_wrap}>
@@ -22,5 +22,5 @@ export default function ShortInput({ func, info }) {
         </label>
       </div>
     </>
-  );
+  )
 }

@@ -1,15 +1,3 @@
-.navBar {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    justify-content: space-between;
-    padding: 20px 0px;
-    background-color: #457498;
-    text-decoration: none;
-    color: white;
-}
-
-
-
 .navBar .links {
     display: flex;
     justify-content: space-evenly;
@@ -32,7 +20,7 @@
 }
 
 .average {
-    border: 1px solid #125488;
+    /* border: 1px solid #125488; */
     margin: 10px;
     display: flex;
     justify-content: space-around;

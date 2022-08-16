@@ -8,6 +8,7 @@ import NavBar from '../../components/dashboardComponents/NavBar'
 import Auth from '../../modules/Auth'
 
 import styles from './Dashboard.module.css'
+import { DashboardContainer } from './styles'
 
 export default function Dashboard() {
   const router = useRouter()
@@ -35,31 +36,33 @@ export default function Dashboard() {
   return (
     <>
       <Auth>
-        <NavBar companyid={companyid} />
-        <div className={styles.dashboard_content}>
-          {items !== 'error' ? (
-            items.every(element => element) && items.length > 0 ? (
-              <>
-                {items && quests ? (
-                  <Feedbacks list={items} quests={quests} />
-                ) : (
-                  <></>
-                )}
-                {items && quests ? (
-                  <Average list={items} quests={quests} />
-                ) : (
-                  <></>
-                )}
-              </>
+        <DashboardContainer>
+          <NavBar companyid={companyid} />
+          <div className={styles.dashboard_content}>
+            {items !== 'error' ? (
+              items.every(element => element) && items.length > 0 ? (
+                <>
+                  {items && quests ? (
+                    <Feedbacks list={items} quests={quests} />
+                  ) : (
+                    <></>
+                  )}
+                  {items && quests ? (
+                    <Average list={items} quests={quests} />
+                  ) : (
+                    <></>
+                  )}
+                </>
+              ) : (
+                <>
+                  <h4>Não há feedbacks ainda.</h4>
+                </>
+              )
             ) : (
-              <>
-                <h4>Não há feedbacks ainda.</h4>
-              </>
-            )
-          ) : (
-            <></>
-          )}
-        </div>
+              <></>
+            )}
+          </div>
+        </DashboardContainer>
       </Auth>
     </>
   )

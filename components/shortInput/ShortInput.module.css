@@ -1,5 +1,5 @@
 .field__input {
-  --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #d2deeb);
+  --uiFieldPlaceholderColor: var(--fieldPlaceholderColor, #2670c7);
 
   background-color: transparent;
   border-radius: 0;
@@ -119,8 +119,8 @@
 }
 
 .field {
-  --fieldBorderColor: #2a93d5;
-  --fieldBorderColorActive: #125488;
+  --fieldBorderColor: #2670c7;
+  --fieldBorderColorActive: #2670c7;
 }
 
 

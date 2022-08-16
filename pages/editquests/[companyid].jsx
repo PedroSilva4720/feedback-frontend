@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 import { useRouter } from 'next/router'
 
 import SelectItem from '../../components/selectItem/SelectItem'
@@ -6,9 +7,11 @@ import ShortInput from '../../components/shortInput/ShortInput'
 import NavBar from '../../components/dashboardComponents/NavBar'
 import Auth from '../../modules/Auth'
 
-import styles from './EditQuests.module.css'
-
 import { sendQuestsConfigs } from '../../services'
+import { negativeNotify } from '../../modules/Alerts'
+
+import styles from './EditQuests.module.css'
+import { Card, CardsContainer, Container } from './style'
 
 export default function EditQuests() {
   const [quest00, setQ00] = useState('')
@@ -76,44 +79,39 @@ export default function EditQuests() {
     [setQ60, setQ61, setQ62, setQ63],
     [setQ70, setQ71, setQ72, setQ73],
     [setQ80, setQ81, setQ82, setQ83],
-    [setQ90, setQ91, setQ92, setQ83],
+    [setQ90, setQ91, setQ92, setQ93],
   ]
   const router = useRouter()
   const { companyid } = router.query
 
-  useEffect(() => {
-    const auth = localStorage.getItem('auth')
-  }, [])
-
   for (let i = 0; i <= 9; i++) {
     resp.push(
       <>
-        <div className={styles.quest}>
-          <h3>Pergunta {i + 1}</h3>
-          <p>Digite a palavra-chave da pergunta</p>
-          <ShortInput func={questsFunc[i][0]} info='Palavra-chave' />
-          <p>Selecione o tipo</p>
-          <SelectItem
-            func={questsFunc[i][1]}
-            options={['selectItem', 'shortInput', 'longInput', 'rate']}
-          />
-          {quests[i] == 'selectItem' ? (
-            <>
-              <p>Digite as opções separadas por vírgula</p>
-              <ShortInput func={questsFunc[i][2]} info='Opções' />
-            </>
-          ) : (
-            <></>
-          )}
-          <p>Digite o título da pergunta</p>
-          <ShortInput func={questsFunc[i][3]} info='Título' />
-        </div>
+        <h3>Pergunta {i + 1}</h3>
+        <p>Digite a palavra-chave da pergunta</p>
+        <ShortInput func={questsFunc[i][0]} info='Palavra-chave' />
+        <p>Selecione o tipo</p>
+        <SelectItem
+          func={questsFunc[i][1]}
+          options={['selectItem', 'shortInput', 'longInput', 'rate']}
+        />
+        {quests[i] == 'selectItem' && (
+          <>
+            <p>Digite as opções separadas por vírgula</p>
+            <ShortInput func={questsFunc[i][2]} info='Opções' />
+          </>
+        )}
+        <p>Digite o título da pergunta</p>
+        <ShortInput func={questsFunc[i][3]} info='Título' />
       </>
     )
   }
 
   const handleSubmit = e => {
-    e.preventDefault()
+    const auth = localStorage.getItem('auth')
+    if (companyid == undefined) {
+      negativeNotify('Falha ao salvar.')
+    }
     sendQuestsConfigs(companyid, auth, {
       quest0: quest00,
       quest0Type: quest01,
@@ -156,21 +154,27 @@ export default function EditQuests() {
       quest9Content: quest91 == 'selectItem' ? quest92 : quest90,
       quest9Title: quest93,
     })
+    router.push(`/editquests/${companyid}`)
   }
 
   return (
     <>
       <Auth>
-        <NavBar />
+        <NavBar companyid={companyid} />
         <form className={styles.form} onSubmit={handleSubmit}>
-          <div className={styles.container}>
-            <div className={styles.quests}>{resp.map(item => item)}</div>
-          </div>
-          <button className={styles.btn_submit} type='submit'>
-            Salvar
-          </button>
+          <Container>
+            <CardsContainer>
+              {resp.map(item => (
+                <Card>{item}</Card>
+              ))}
+            </CardsContainer>
+            <button className={styles.btn_submit} type='submit'>
+              Salvar
+            </button>
+          </Container>
         </form>
       </Auth>
+      <ToastContainer />
     </>
   )
 }

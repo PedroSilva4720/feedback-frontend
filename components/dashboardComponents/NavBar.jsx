@@ -1,15 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-// import { useRouter } from 'next/router'
-// import { Link, useParams, useNavigate } from 'react-router-dom'
 
-import styles from './Components.module.css'
+import { Links, Navbar, LogoutLink, NavigateLink } from './style.navbar'
 
 export default function NavBar({ companyid }) {
   const router = useRouter()
-  // const navigate = useNavigate()
-  // const router = useRouter()
 
   const logout = () => {
     localStorage.removeItem('auth')
@@ -18,28 +14,26 @@ export default function NavBar({ companyid }) {
 
   return (
     <>
-      <div className={styles.navBar}>
-        <div className={styles.links}>
-          <Link href={`/editquests/${encodeURIComponent(companyid)}`}>
-            <a>Editar</a>
+      <Navbar>
+        <Links>
+          <Link href={`/editquests/${companyid}`}>
+            <NavigateLink>Editar</NavigateLink>
           </Link>
           <Link href={`/dashboard/${companyid}`}>
-            <a>Dashboard</a>
+            <NavigateLink>Dashboard</NavigateLink>
           </Link>
           <Link href={`/create-user/${companyid}`}>
-            <a>Criar Feedback</a>
+            <NavigateLink>Criar Feedback</NavigateLink>
           </Link>
           <Link href='/verify'>
-            <a>Verificar</a>
+            <NavigateLink>Verificar</NavigateLink>
           </Link>
           <Link href={`/configs/${companyid}`}>
-            <a>Configurações</a>
+            <NavigateLink>Configurações</NavigateLink>
           </Link>
-        </div>
-        <a className={styles.logout} onClick={logout}>
-          Logout
-        </a>
-      </div>
+        </Links>
+        <LogoutLink onClick={logout}>Logout</LogoutLink>
+      </Navbar>
     </>
   )
 }

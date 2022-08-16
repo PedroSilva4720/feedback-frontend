@@ -2,38 +2,15 @@ import React, { useState } from 'react'
 
 import ShortInput from '../../components/shortInput/ShortInput'
 import { useToken } from '../../services'
+import { positiveNotify, negativeNotify } from '../../modules/Alerts'
 
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import styles from './verify.module.css'
 
 export default function Verify() {
   const [token, setToken] = useState()
-
-  const positiveNotify = message => {
-    toast.success(message, {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    })
-  }
-
-  const negativeNotify = message => {
-    toast.error(message, {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    })
-  }
 
   const HandleSubmit = e => {
     e.preventDefault()

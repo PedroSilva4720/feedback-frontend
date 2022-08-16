@@ -1,6 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Circle from './Circle'
 import chroma from 'chroma-js'
+
+import styles from './Components.module.css'
+import { AverageContainer } from './styles'
 
 export default ({ list, quests }) => {
   const colors = chroma.scale(['#f55f5f', '#91f55f']).mode('lch').colors(100)
@@ -258,22 +261,25 @@ export default ({ list, quests }) => {
 
   return (
     <>
-      {list.every(element => element) ? (
-        <div className='average'>
-          {arr[0][2] ? arr[0][2] : <></>}
-          {arr[1][2] ? arr[1][2] : <></>}
-          {arr[2][2] ? arr[2][2] : <></>}
-          {arr[3][2] ? arr[3][2] : <></>}
-          {arr[4][2] ? arr[4][2] : <></>}
-          {arr[5][2] ? arr[5][2] : <></>}
-          {arr[6][2] ? arr[6][2] : <></>}
-          {arr[7][2] ? arr[7][2] : <></>}
-          {arr[8][2] ? arr[8][2] : <></>}
-          {arr[9][2] ? arr[9][2] : <></>}
-        </div>
-      ) : (
-        <></>
-      )}
+      <div>
+        <p>Médias</p>
+        {list.every(element => element) && (
+          <div className={styles.average}>
+            <AverageContainer>
+              {arr[0][2] && arr[0][2]}
+              {arr[1][2] && arr[1][2]}
+              {arr[2][2] && arr[2][2]}
+              {arr[3][2] && arr[3][2]}
+              {arr[4][2] && arr[4][2]}
+              {arr[5][2] && arr[5][2]}
+              {arr[6][2] && arr[6][2]}
+              {arr[7][2] && arr[7][2]}
+              {arr[8][2] && arr[8][2]}
+              {arr[9][2] && arr[9][2]}
+            </AverageContainer>
+          </div>
+        )}
+      </div>
     </>
   )
 }

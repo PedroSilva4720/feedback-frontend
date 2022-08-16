@@ -37,7 +37,7 @@ export default ({ label, percentage, colour }) => {
     return (
       <text
         x='50%'
-        y='5%'
+        y='7%'
         dominantBaseline='central'
         textAnchor='middle'
         fontSize={'0.9em'}
