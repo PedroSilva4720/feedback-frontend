@@ -8,7 +8,6 @@ import SelectItem from '../../components/selectItem/SelectItem'
 import ShortInput from '../../components/shortInput/ShortInput'
 import NavBar from '../../components/dashboardComponents/NavBar'
 import Auth from '../../modules/Auth'
-
 import { negativeNotify } from '../../modules/Alerts'
 
 import styles from './EditQuests.module.css'
