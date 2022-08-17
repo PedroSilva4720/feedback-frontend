@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router.js'
-
-import ShortInput from '../../components/shortInput/ShortInput.jsx'
+import { ToastContainer } from 'react-toastify'
 
 import { createUser } from '../../services/index.js'
+
+import ShortInput from '../../components/shortInput/ShortInput.jsx'
 
 import styles from './CreateUser.module.css'
 
@@ -17,8 +18,13 @@ export default function CreateUser() {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const userToken = await createUser(name, email, phone, companyid)
-    router.push(`/create-post/${companyid}/?questid=${userToken}`)
+    await createUser(name, email, phone, companyid).then(response => {
+      if (response.error) {
+        return
+      } else {
+        router.push(`/create-post/${companyid}/?questid=${response}`)
+      }
+    })
   }
 
   return (
@@ -49,6 +55,7 @@ export default function CreateUser() {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </>
   )
 }

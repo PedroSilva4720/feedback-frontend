@@ -8,6 +8,8 @@ import { login } from '../../services'
 import PassInput from '../../components/passInput/PassInput.jsx'
 import ShortInput from '../../components/shortInput/ShortInput.jsx'
 
+import { negativeNotify } from '../../modules/Alerts'
+
 import { Container, SubmitButton } from '../../styles/styles'
 import { Form } from './styles'
 
@@ -23,7 +25,22 @@ export default function Login() {
 
   const handleSubmit = e => {
     e.preventDefault()
+    if (!Boolean(username) && !Boolean(password)) {
+      negativeNotify('Preencha o nome de usuário e a senha.')
+      return
+    }
+    if (!Boolean(username)) {
+      negativeNotify('Preencha o nome de usuário.')
+      return
+    }
+    if (!Boolean(password)) {
+      negativeNotify('Preencha a senha.')
+      return
+    }
     login(username, password).then(response => {
+      if (response.error) {
+        return
+      }
       const { managerToken, companyId } = response.response
       if (response.status == 200) {
         localStorage.setItem('auth', managerToken)

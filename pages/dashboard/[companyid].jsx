@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { ToastContainer } from 'react-toastify'
 
 import { getDashboardItems, getQuests } from '../../services'
+
 import Feedbacks from '../../components/dashboardComponents/Feedbacks'
 import Average from '../../components/dashboardComponents/Average'
 import NavBar from '../../components/dashboardComponents/NavBar'
@@ -23,13 +25,21 @@ export default function Dashboard() {
     const jwt = localStorage.getItem('auth')
 
     if (!!er.exec(jwt)) {
-      getDashboardItems(jwt, companyid).then(res => {
-        setItems(res)
+      getDashboardItems(jwt, companyid).then(response => {
+        if (response.error) {
+          return
+        } else {
+          setItems(response)
+        }
       })
     }
 
-    getQuests(companyid).then(res => {
-      setQuests(res)
+    getQuests(companyid).then(response => {
+      if (response.error) {
+        return
+      } else {
+        setQuests(res)
+      }
     })
   }, [])
 
@@ -64,6 +74,7 @@ export default function Dashboard() {
           </div>
         </DashboardContainer>
       </Auth>
+      <ToastContainer />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import { ToastContainer } from 'react-toastify'
 
 import { createPost, getQuests } from '../../services'
 
@@ -43,12 +44,23 @@ export default function CreatePost() {
         quest9,
       },
       questid
-    )
-    alert(token)
-    router.push(`/create-user/${companyid}`)
+    ).then(response => {
+      if (response.error) {
+        return
+      } else {
+        alert(token)
+        router.push(`/create-user/${companyid}`)
+      }
+    })
   }
 
-  getQuests(companyid).then(setQuests)
+  getQuests(companyid).then(response => {
+    if (response.error) {
+      return
+    } else {
+      setQuests(response)
+    }
+  })
 
   const keys = {
     longInput: (func, value) => <LongInput func={func} info={value} />,
@@ -141,6 +153,7 @@ export default function CreatePost() {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </>
   )
 }

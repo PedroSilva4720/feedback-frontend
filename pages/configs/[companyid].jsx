@@ -16,6 +16,7 @@ import {
 } from '../../services'
 
 import styles from './Configs.module.css'
+import e from 'express'
 
 //TODO update this page to work with nextJs
 
@@ -29,7 +30,12 @@ export default function Configs() {
 
   useEffect(() => {
     jwt = localStorage.getItem('auth')
-    getConfigsDefaultState(companyid, jwt).then(setData)
+    getConfigsDefaultState(companyid, jwt).then(response => {
+      if (response.error) {
+        return
+      }
+      setData(response)
+    })
   }, [])
 
   useEffect(() => {
@@ -64,15 +70,25 @@ export default function Configs() {
   const handleMarkdownStatusChange = () => {
     setUseMarkdownChecked(!useMarkdownChecked)
     localStorage.setItem('useMarkdown', !useMarkdownChecked)
-    setMarkdownStatus(!useMarkdownChecked, companyid, jwt)
-    notify()
+    setMarkdownStatus(!useMarkdownChecked, companyid, jwt).then(response => {
+      if (response.error) {
+        return
+      } else {
+        notify()
+      }
+    })
   }
 
   const handleTokenStatusChange = () => {
     setUseTokenChecked(!useMarkdownChecked)
     localStorage.setItem('useToken', !useTokenChecked)
-    setTokenStatus(!useTokenChecked, companyid, jwt)
-    notify()
+    setTokenStatus(!useTokenChecked, companyid, jwt).then(response => {
+      if (response.error) {
+        return
+      } else {
+        notify()
+      }
+    })
   }
 
   return (
